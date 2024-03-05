@@ -3,13 +3,14 @@ import requests
 def get_emp_todo(emp_id):
     TODO_URL = f"https://jsonplaceholder.typicode.com/users/{emp_id}/todos"
     USER_URL = f"https://jsonplaceholder.typicode.com/users/{emp_id}"
+    INITIAL_URL = "https://jsonplaceholder.typicode.com/users"
 
     # Get the JSON of TODOS - DONE
     # Get TOTAL NUMBER of todos - DONE
     # Get COMPLETED NUMBER of todos - DONE
     # Get THE NAME of the employee - DONE 
 
-    # GET THE TITLES OF THE COMPLETED TASKS
+    # GET THE TITLES OF THE COMPLETED TASKS - DONE
     # AND PRINT THEM ALL OUT ON STDOUT
     # EACH TASKS SHOULD BE PRINTED ON A NEW LINE
     
@@ -21,6 +22,8 @@ def get_emp_todo(emp_id):
         if todo["completed"] is True:
             emp_completed_todos += 1
     print(f"Employee {emp_name} From total todos of {emp_total_todos}, {emp_completed_todos} tasks have been done")
+    for user in requests.get(INITIAL_URL).json():#Titles of the employees
+        print(user["company"]["bs"])
 
 
-get_emp_todo(3)
+get_emp_todo(1)
